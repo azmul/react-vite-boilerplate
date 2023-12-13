@@ -1,0 +1,26 @@
+.menu {
+    background-color: #263238;
+    color: rgba(255, 255, 255, 0.5);
+
+    :global(.ant-menu-item-group-title) {
+        padding: 12px 20px !important;
+        letter-spacing: 0.05em;
+        pointer-events: none;
+        cursor: default;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+.dashboardWavesEffect {
+    padding: 20px;
+
+    a {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+}
+
+.width70 {
+    width: 70px;
+}
