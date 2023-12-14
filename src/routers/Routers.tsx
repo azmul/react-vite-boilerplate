@@ -4,6 +4,7 @@ import FullScreenLoader from "@/components/spinner/Spinner";
 import PageLayout from "@/page-layout/PageLayout";
 import RequireAuth from "@/identity/RequireAuth";
 import ProtectedRoute from "@/identity/ProtectedRoute";
+import PublicRoute from "@/identity/PublicRoute";
 import { UserRoles } from "@/identity/identityScopes";
 
 import DashboardPage from "@/pages/dashboard";
@@ -55,7 +56,9 @@ export default function Routers() {
             </Route>
           </Route>
 
-          <Route path="signin" element={<SignInPage />} />
+          <Route element={<PublicRoute />}>
+             <Route path="signin" element={<SignInPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </React.Suspense>

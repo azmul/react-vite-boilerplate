@@ -3,4 +3,4 @@ export type FieldType = {
   password?: string;
 };
 
-export type JwtPayload = { roles: string[]; exp: number; sub: number };
+export type JwtPayload = { roles: string[]; exp: number; sub: number; username: string};

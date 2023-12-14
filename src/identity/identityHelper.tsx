@@ -1,10 +1,13 @@
 import cookie from "react-cookies";
+import { jwtDecode } from "jwt-decode";
+import { JwtPayload } from "@/identity/identityType";
 
 interface MyWindow extends Window {}
 declare var window: MyWindow;
 
 const SESSION_TOKEN = "session-token";
 const ROLES_PERMISSIONS = "roles-permissions";
+
 
 /**
  * Save token in a cookie
@@ -14,10 +17,11 @@ const ROLES_PERMISSIONS = "roles-permissions";
  */
 export const saveTokens = (
   accessToken: string,
-  expireAt?: number,
-  refreshToken?: string
+  refreshToken: string,
 ) => {
-  const value = { accessToken, expireAt, refreshToken };
+  const decoded: JwtPayload = jwtDecode(accessToken);
+  const user = { username: decoded.username, id: decoded.sub }
+  const value = { accessToken, refreshToken, user, expireAt: decoded.exp };
   cookie.save(SESSION_TOKEN, value, { path: "/" });
 };
 
@@ -44,6 +48,7 @@ export const getTokens = () => {
   return {
     accessToken: value && value.accessToken,
     expireAt: value && value.expireAt,
+    user: value && value.user,
     refreshToken: value && value.refreshToken,
   };
 };

@@ -23,6 +23,7 @@ export const ResponseStatus = Object.freeze({
   CREATED: 201,
   NO_CONTENT: 204,
   UNAUTHORIZED: 401,
+  TOKEN_EXPIRED: 403,
   NOT_FOUND: 404,
   DENIED: 412,
   REDIRECT: 503,
