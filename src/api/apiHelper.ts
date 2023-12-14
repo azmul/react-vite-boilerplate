@@ -42,11 +42,13 @@ api.interceptors.response.use((response: AxiosResponse) => {
 }, async function (error) {
   const originalRequest = error.config;
 
-  if ((error.response.status === ResponseStatus.TOKEN_EXPIRED || error.response.status === ResponseStatus.UNAUTHORIZED) && !originalRequest._retry) {
+  if (error.response.status === ResponseStatus.TOKEN_EXPIRED  && !originalRequest._retry) {
     const { refreshToken } = getTokens();
     originalRequest._retry = true;
+    
     const token: {accessToken: string; refreshToken: string} = await authApi.refreshToken(refreshToken);
     saveTokens(token.accessToken, token.refreshToken)
+
     axios.defaults.headers.common['Authorization'] = `Bearer ${token.accessToken}`;
     return api(originalRequest);
   }
