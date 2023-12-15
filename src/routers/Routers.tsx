@@ -2,18 +2,19 @@ import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FullScreenLoader from "@/components/spinner/Spinner";
 import PageLayout from "@/page-layout/PageLayout";
-import RequireAuth from "@/identity/RequireAuth";
-import ProtectedRoute from "@/identity/ProtectedRoute";
-import PublicRoute from "@/identity/PublicRoute";
+import RequireAuth from "@/routers/RequireAuth";
+import ProtectedRoute from "@/routers/ProtectedRoute";
+import PublicRoute from "@/routers/PublicRoute";
 import { UserRoles } from "@/identity/identityScopes";
 
 import DashboardPage from "@/pages/dashboard";
 import SignInPage from "@/pages/signin";
-import MemberPage from "@/pages/member";
+import MemberPage from "@/pages/users";
 import RolesPage from "@/pages/roles";
 import InvitationPage from "@/pages/invitation";
 import RfidUsersPage from "@/pages/rfid-users";
 import SMULocksPage from "@/pages/smu-locks";
+import ProfilePage from "@/pages/profile";
 
 export default function Routers() {
   return (
@@ -50,6 +51,7 @@ export default function Routers() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="profile" element={<ProfilePage />} />
               <Route path="invitation" element={<InvitationPage />} />
               <Route path="rifd-users" element={<RfidUsersPage />} />
               <Route path="smu-locks" element={<SMULocksPage />} />
@@ -57,7 +59,7 @@ export default function Routers() {
           </Route>
 
           <Route element={<PublicRoute />}>
-             <Route path="signin" element={<SignInPage />} />
+            <Route path="signin" element={<SignInPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

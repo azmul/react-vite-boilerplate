@@ -6,7 +6,7 @@ import cx from "classnames";
 import $ from "jquery";
 import capitalize from "lodash/capitalize";
 import { logout } from "@/identity/identityHelper";
-import { RoutePermission } from "@/identity/ProtectedRoute";
+import { RoutePermission } from "@/routers/ProtectedRoute";
 import { UserRoles } from "@/identity/identityScopes";
 import LOGO from "@/assets/images/logoipsum-239.svg";
 import HEADER_AVATAR from "@/assets/images/users/avatar-1.jpg";
@@ -129,9 +129,9 @@ export default function Header() {
                 />
               </button>
               <div className="dropdown-menu dropdown-menu-end">
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/profile">
                   Profile
-                </a>
+                </Link>
                 <a className="dropdown-item" href="#">
                   My Wallet
                 </a>
@@ -146,6 +146,7 @@ export default function Header() {
                 <a
                   className="dropdown-item text-danger"
                   onClick={() => logout()}
+                  href="#"
                 >
                   Logout
                 </a>

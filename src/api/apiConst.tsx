@@ -1,9 +1,13 @@
 /** Version parameter for endpoint URL */
 const VERSION_URL = "/api/v1";
 
-/** Private endpoint URLs */
+/** endpoint URLs */
 const AUTH_URL = VERSION_URL + "/auth";
-
+const USERS_URL = VERSION_URL + "/users";
+const RFID_USERS_URL = VERSION_URL + "/rfid-users";
+const ROLES_URL = VERSION_URL + "/roles";
+const ACTIONS_URL = VERSION_URL + "/actions";
+const USER_ROLE_URL = VERSION_URL + "/user-role";
 /**
  * Enum with all api endpoints
  * @readonly
@@ -11,6 +15,11 @@ const AUTH_URL = VERSION_URL + "/auth";
  */
 export const Endpoints = Object.freeze({
   AUTH: AUTH_URL,
+  USERS: USERS_URL,
+  ROLES: ROLES_URL,
+  ACTIONS: ACTIONS_URL,
+  USER_ROLE: USER_ROLE_URL,
+  RFID_USERS: RFID_USERS_URL,
 });
 
 /**
